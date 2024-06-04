@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native"
-import ScreenWrapper from "../components/wrappers/ScreenWrapper";
-import CustomButton from "../components/buttons/customButton/CustomButton";
+import { StyleSheet, Text, View } from 'react-native';
+import ScreenWrapper from '../components/wrappers/ScreenWrapper';
+import CustomButton from '../components/buttons/customButton/CustomButton';
 
 const OnboardingScreen = () => {
   return (
@@ -10,18 +10,18 @@ const OnboardingScreen = () => {
         <CustomButton title="List" style={styles.button} />
       </View>
     </ScreenWrapper>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
-    marginBottom: 20
-  }
-})
+    marginBottom: 20,
+  },
+});
 
 export default OnboardingScreen;

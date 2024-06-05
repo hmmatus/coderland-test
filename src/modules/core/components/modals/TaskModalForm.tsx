@@ -10,7 +10,7 @@ interface CustomModalProps {
 }
 export const TaskModalForm = ({ ...props }: CustomModalProps) => {
   const [description, setDescription] = useState('');
-  const isNotEmpty = !!description;
+  const isNotEmpty = !!description && description.length > 0;
   const onSave = () => {
     props.onClose();
     props.onSave(description);
@@ -22,17 +22,16 @@ export const TaskModalForm = ({ ...props }: CustomModalProps) => {
         <View style={styles.inputWrapper}>
           <TextInput
             style={styles.input}
-            underlineColorAndroid="transparent"
-            placeholder="Description"
-            placeholderTextColor="grey"
-            numberOfLines={10}
-            multiline={true}
-            onChangeText={(value) => setDescription(value)}
+            placeholder="Task description"
             value={description}
+            onChangeText={setDescription}
+            multiline
           />
         </View>
-        <CustomButton disabled={!isNotEmpty} title="Save task" onPress={onSave} />
-        <CustomButton title="Cancel" onPress={props.onClose} />
+        <View style={styles.buttonContainer}>
+          <CustomButton disabled={!isNotEmpty} title="Save task" onPress={onSave} />
+          <CustomButton title="Cancel" onPress={props.onClose} />
+        </View>
       </View>
     </Modal>
   );
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: 'white',
     padding: 12,
+    flex: 1,
   },
   container: {
     width: '100%',
@@ -53,13 +53,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 12,
     padding: 5,
-  },
-  input: {
     height: 150,
-    justifyContent: 'flex-start',
   },
-  button: {
-    marginBottom: 5,
+  input: {},
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 12,
   },
 });
 

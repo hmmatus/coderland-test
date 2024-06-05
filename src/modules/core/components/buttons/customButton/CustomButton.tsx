@@ -3,10 +3,12 @@ import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string;
 }
-const CustomButton = ({ title, ...props }: CustomButtonProps) => {
+
+const CustomButton = ({ title, style, disabled, ...props }: CustomButtonProps) => {
   return (
     <TouchableOpacity
-      style={[styles.buttonContainer, props.style, { opacity: props.disabled ? 0.4 : 1 }]}
+      style={[styles.buttonContainer, style, { opacity: disabled ? 0.4 : 1 }]}
+      disabled={disabled}
       {...props}
     >
       <Text style={styles.text}>{title}</Text>

@@ -9,6 +9,7 @@ const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
       <View style={styles.container}>
         <CustomButton
           title="Tasks"
+          style={styles.button}
           onPress={() => {
             navigation.navigate('Task');
           }}

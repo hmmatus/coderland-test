@@ -1,30 +1,29 @@
-import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 interface CustomButtonProps extends TouchableOpacityProps {
-  title: string
-
+  title: string;
 }
-const CustomButton = ({title, ...props}: CustomButtonProps) => {
+const CustomButton = ({ title, ...props }: CustomButtonProps) => {
   return (
-    <TouchableOpacity style={[styles.buttonContainer, props.style]} {...props}>
+    <TouchableOpacity
+      style={[styles.buttonContainer, props.style, { opacity: props.disabled ? 0.4 : 1 }]}
+      {...props}
+    >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: "blue",
-    padding: 10,
+    backgroundColor: 'blue',
+    padding: 12,
     borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-    maxWidth: '80%',
-    height: 50,
   },
   text: {
     fontSize: 16,
-  }
-})
+    color: 'white',
+  },
+});
 
 export default CustomButton;

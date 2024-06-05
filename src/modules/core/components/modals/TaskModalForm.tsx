@@ -1,36 +1,46 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View, Text, Modal, TouchableOpacity } from 'react-native';
 import CustomButton from '../buttons/customButton/CustomButton';
-import Modal, { ModalProps } from 'react-native-modal';
 
 interface CustomModalProps {
   onClose: () => void;
   isVisible: boolean;
   onSave: (description: string) => void;
 }
-export const TaskModalForm = ({ ...props }: CustomModalProps) => {
+
+export const TaskModalForm = ({ onClose, isVisible, onSave }: CustomModalProps) => {
   const [description, setDescription] = useState('');
   const isNotEmpty = !!description && description.length > 0;
-  const onSave = () => {
-    props.onClose();
-    props.onSave(description);
+
+  const handleSave = () => {
+    onSave(description);
     setDescription('');
+    onClose();
   };
+
   return (
-    <Modal isVisible={props.isVisible} style={styles.modal} hasBackdrop>
-      <View style={styles.container}>
-        <View style={styles.inputWrapper}>
-          <TextInput
-            style={styles.input}
-            placeholder="Task description"
-            value={description}
-            onChangeText={setDescription}
-            multiline
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <CustomButton disabled={!isNotEmpty} title="Save task" onPress={onSave} />
-          <CustomButton title="Cancel" onPress={props.onClose} />
+    <Modal visible={isVisible} transparent animationType="slide" onRequestClose={onClose}>
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalContainer}>
+          <Text style={styles.title}>Add New Task</Text>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.input}
+              placeholder="Task description"
+              value={description}
+              onChangeText={setDescription}
+              multiline
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              disabled={!isNotEmpty}
+              title="Save task"
+              onPress={handleSave}
+              style={styles.button}
+            />
+            <CustomButton title="Cancel" onPress={onClose} style={styles.button} />
+          </View>
         </View>
       </View>
     </Modal>
@@ -38,28 +48,42 @@ export const TaskModalForm = ({ ...props }: CustomModalProps) => {
 };
 
 const styles = StyleSheet.create({
-  modal: {
-    backgroundColor: 'white',
-    padding: 12,
+  modalOverlay: {
     flex: 1,
-  },
-  container: {
-    width: '100%',
-    height: 60,
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
   },
   inputWrapper: {
     borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 12,
-    padding: 5,
-    height: 150,
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 15,
+    height: 100,
   },
-  input: {},
+  input: {
+    fontSize: 16,
+    flex: 1,
+  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 12,
+  },
+  button: {
+    width: '45%',
   },
 });
 

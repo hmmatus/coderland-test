@@ -1,3 +1,4 @@
+import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import ScreenWrapper from '../../core/components/wrappers/ScreenWrapper';
 import CustomButton from '../../core/components/buttons/customButton/CustomButton';

@@ -1,6 +1,7 @@
-import {SafeAreaView, StyleSheet} from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
-const ScreenWrapper = ({children}: {children: JSX.Element}) => {
+const ScreenWrapper = ({ children }: { children: JSX.Element }) => {
   return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
 };
 

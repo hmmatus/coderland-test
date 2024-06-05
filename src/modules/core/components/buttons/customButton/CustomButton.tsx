@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 interface CustomButtonProps extends TouchableOpacityProps {

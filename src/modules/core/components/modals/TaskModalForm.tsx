@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import CustomButton from '../buttons/customButton/CustomButton';
 import Modal, { ModalProps } from 'react-native-modal';

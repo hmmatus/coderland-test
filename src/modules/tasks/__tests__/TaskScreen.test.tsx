@@ -4,12 +4,6 @@ import { renderWithProviders } from '../../../utils/test/test-utils';
 import { screen } from '@testing-library/react-native';
 import reducer, { addTask } from '../../../redux/slice/task';
 import { TaskI } from '../model/task.model';
-jest.mock('react-native-modal', () => {
-  return {
-    __esModule: true,
-    default: 'Modal',
-  };
-});
 describe('Testing Task Screen', () => {
   it('should render the task screen', () => {
     renderWithProviders(<TasksScreen />);

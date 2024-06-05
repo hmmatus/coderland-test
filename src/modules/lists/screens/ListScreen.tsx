@@ -4,9 +4,10 @@ import ScreenWrapper from '../../core/components/wrappers/ScreenWrapper';
 import { useQuery } from '@tanstack/react-query';
 import ListElementCard from '../components/cards/ListElementCard';
 import { getListHook } from '../hooks/getList';
+import LoadingLayout from '../../core/components/layouts/LoadingLayout';
 const ListScreen = () => {
   const { data, isLoading, isError } = getListHook();
-  if (isLoading) return <ActivityIndicator />;
+  if (isLoading) return <LoadingLayout />;
   return (
     <ScreenWrapper>
       <View style={styles.container}>

@@ -34,7 +34,13 @@ const TaskScreen = () => {
         <FlatList
           refreshing
           data={tasks}
-          renderItem={({ item }) => <Text>{item.description}</Text>}
+          style={{ width: '100%', marginTop: 12 }}
+          renderItem={({ item }) => (
+            <View style={styles.itemContainer}>
+              <Text style={styles.text}>{item.description}</Text>
+            </View>
+          )}
+          ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
         />
         <TaskModalForm isVisible={modalVisible} onClose={closeModal} onSave={onSaveTask} />
       </View>
@@ -44,9 +50,19 @@ const TaskScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
     alignItems: 'center',
     padding: 12,
+  },
+  itemContainer: {
+    width: '100%',
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+  },
+  text: {
+    fontSize: 16,
+    color: 'black',
   },
 });
 

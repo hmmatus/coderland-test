@@ -24,7 +24,7 @@ export default function MainStack() {
         component={OnboardingScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Task" component={TaskScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Task" component={TaskScreen} />
     </Stack.Navigator>
   );
 }

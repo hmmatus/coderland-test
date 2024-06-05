@@ -2,6 +2,7 @@ import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navig
 import React from 'react';
 import OnboardingScreen from '../modules/core/screens/Onboarding';
 import TaskScreen from '../modules/tasks/screens/TaskScreen';
+import ListScreen from '../modules/lists/screens/ListScreen';
 
 // Stack Params List
 type MainStackParamList = {
@@ -25,6 +26,7 @@ export default function MainStack() {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Task" component={TaskScreen} />
+      <Stack.Screen name="List" component={ListScreen} />
     </Stack.Navigator>
   );
 }

@@ -15,7 +15,6 @@ const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
         />
         <CustomButton
           title="List"
-          style={styles.button}
           onPress={() => {
             navigation.navigate('List');
           }}
@@ -28,6 +27,7 @@ const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },

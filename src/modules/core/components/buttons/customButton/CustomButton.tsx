@@ -16,9 +16,11 @@ const CustomButton = ({ title, ...props }: CustomButtonProps) => {
 
 const styles = StyleSheet.create({
   buttonContainer: {
+    width: 150,
     backgroundColor: 'blue',
     padding: 12,
     borderRadius: 12,
+    alignItems: 'center',
   },
   text: {
     fontSize: 16,
